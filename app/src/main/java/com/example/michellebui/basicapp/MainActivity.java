@@ -14,17 +14,22 @@ import com.squareup.picasso.Picasso;
 import static android.provider.AlarmClock.EXTRA_MESSAGE;
 
 public class MainActivity extends AppCompatActivity {
+    //Declaring our ImageView
+    private ImageView imageView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        TextView text = (TextView) findViewById(R.id.text_view);
-        text.setTextColor(Color.parseColor("#3baac1"));
-        ImageView imageView = (ImageView) findViewById(R.id.image_view);
+        imageView = (ImageView) findViewById(R.id.image_view);
         Picasso.with(this)
                 .load("http://s3.amazonaws.com/bit-photos/large/7009224.jpeg")
+                .placeholder(R.mipmap.ic_launcher)
+                .fit()
                 .into(imageView);
+
+        TextView text = (TextView) findViewById(R.id.text_view);
+        text.setTextColor(Color.parseColor("#3baac1"));
     }
 
     /** Called when the user clicks the Send button */
